@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <Modal></Modal>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <router-link class="navbar-brand" to="/">{{ t("info.soralive") }}</router-link>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" :aria-label="t('action.toggleNavbar')">
@@ -23,7 +23,7 @@
                                 <li><a class="dropdown-item" href="javascript:;" @click="chlang('en')">{{t("lang.en")}}</a></li>
                             </ul>
                         </li>
-                        <template v-if="isLogin">
+                        <template v-if="gConst.status.isLogin">
                         <li class="nav-item"><router-link class="nav-link" to="/reg">{{t("info.reg")}}</router-link></li>
                         <li class="nav-item"><router-link class="nav-link" to="/login">{{t("info.login")}}</router-link></li>
                         </template>
@@ -77,21 +77,46 @@ body{
 </style>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+import gConst from './globalconst'
+import { fetchPostWithSign } from './util/fetchpost'
+import Modal from './components/modal.vue'
+
 const { t, locale } = useI18n();
+const router = useRouter();
 
 console.log("SoraLive 0.1.0 created by MoewSound Idols.");
 locale.value = localStorage.getItem("lang") || "zh";
+checkLogin();
 
-const isLogin = computed(() => localStorage.getItem("token") == null);
 const uname = computed(() => localStorage.getItem("uname") || "[][NULL]");
 
 function chlang(v) {
     locale.value = v;
     localStorage.setItem("lang", v);
 }
-function logout(){
-
+function checkLogin() {
+    gConst.status.isLogin = localStorage.getItem("token") == null;
+}
+async function logout() {
+    let url = gConst.apiRoot + "user/logout";
+    let res = await fetchPostWithSign(url, {
+        token: localStorage.getItem('token') || ""
+    });
+    let json = await res.json();
+    if (json['error'] != 0) {
+        gConst.globalbus.emit("send-info", json['info']);
+    } else {
+        gConst.globalbus.emit("send-info", "tips.unloginSucceed");   
+    }
+    router.push('/login');
+    localStorage.removeItem('token');
+    localStorage.removeItem('uname');
+    localStorage.removeItem('sk');
+    localStorage.removeItem('uid');
+    localStorage.removeItem('user-type');
+    checkLogin();
 }
 </script>

@@ -1,10 +1,11 @@
-import crypto from 'crypto'
+import hmacSha1 from 'crypto-js/hmac-sha1'
+import encBase64 from 'crypto-js/enc-base64'
 
 function hmac_sha1(text, pass) {
-    return crypto.createHmac('sha1', pass)
-        .update(text)
-        .digest()
-        .toString('base64');
+    let encrypted = hmacSha1(text, pass);
+
+    let res = encBase64.stringify(encrypted);
+    return res;
 }
 
 export default function fetchpost(url, data){

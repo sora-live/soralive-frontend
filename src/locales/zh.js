@@ -1,6 +1,6 @@
 const zh = {
     promotion: {
-        home: "<h1>与全世界分享你的&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1><h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キラキラドキドキ</h1>",
+        home: "与全世界分享你的&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キラキラドキドキ",
     },
     info: {
         soralive: "SoraLive",
@@ -50,7 +50,8 @@ const zh = {
         deletedMessage: "消息已被撤回",
         confirm: "确认",
         cancel: "取消",
-        operationConfirmation: "操作确认"
+        operationConfirmation: "操作确认",
+        needEntryPassword: "本房间需要输入密码"
     },
     tips: {
         repassDifferent: "两次密码不一致。",

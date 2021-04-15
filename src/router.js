@@ -1,15 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import HelloWorld from './components/HelloWorld.vue'
+import HomePage from './components/home.vue'
+import ListPage from './components/list.vue'
+import LoginPage from './components/login.vue'
+import RegPage from './components/reg.vue'
+import UserPage from './components/user.vue'
+import ChangePassPage from './components/changepass.vue'
+import LivePage from './components/live.vue'
 
 const routes = [
-    {path: '/', name: "home", component: HelloWorld},
-    // {path: '/list', name: "list", component: ListPage},
-    // {path: '/login', name: "login", component: LoginPage},
-    // {path: '/reg', name: "reg", component: RegPage},
-    // {path: '/user', name: "user", component: UserPage},
-    // {path: '/changepass', name: "changepass", component: ChangePassPage},
-    // {path: '/live/:uid', name: "live", component: LivePage},
+    {path: '/', name: "home", component: HomePage},
+    {path: '/list', name: "list", component: ListPage},
+    {path: '/login', name: "login", component: LoginPage},
+    {path: '/reg', name: "reg", component: RegPage},
+    {path: '/user', name: "user", component: UserPage},
+    {path: '/changepass', name: "changepass", component: ChangePassPage},
+    {path: '/live/:uid', name: "live", component: LivePage},
 ];
 
 const router = createRouter({

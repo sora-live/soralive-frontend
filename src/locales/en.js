@@ -1,6 +1,6 @@
 const en = {
     promotion: {
-        home: "<h1>Share your キラキラドキドキ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1><h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with the world.</h1>",
+        home: "Share your キラキラドキドキ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with the world.",
     },
     info: {
         soralive: "SoraLive",
@@ -50,7 +50,8 @@ const en = {
         deletedMessage: "Deleted Message",
         confirm: "Confirm",
         cancel: "Cancel",
-        operationConfirmation: "Operation confirmation"
+        operationConfirmation: "Operation confirmation",
+        needEntryPassword: "Please enter the password to enter the room."
     },
     tips: {
         repassDifferent: "The duplicate password is different.",
