@@ -51,7 +51,15 @@ const en = {
         confirm: "Confirm",
         cancel: "Cancel",
         operationConfirmation: "Operation confirmation",
-        needEntryPassword: "Please enter the password to enter the room."
+        needEntryPassword: "Please enter the password to enter the room.",
+        noStreaming: "Not Streaming",
+        realTimeComments: "Comments",
+        onlineCount: "Online",
+        delete: "Del",
+        userban: "Ban",
+        send: "Send",
+        refresh: "Refresh",
+        onlineuserlist: "Online User List: "
     },
     tips: {
         repassDifferent: "The duplicate password is different.",

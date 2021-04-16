@@ -18,7 +18,7 @@
                             <a href="javascript:;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
                                 {{t("lang." + locale)}} <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="javascript:;" @click="chlang('zh')">{{t("lang.zh")}}</a></li>
                                 <li><a class="dropdown-item" href="javascript:;" @click="chlang('en')">{{t("lang.en")}}</a></li>
                             </ul>
@@ -32,7 +32,7 @@
                             <a href="javascript:;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ uname }} <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li><router-link class="dropdown-item" to="/user">{{t("info.userCenter")}}</router-link></li>
                                 <li><a class="dropdown-item" href="javascript:;" @click="jumptomyroom">{{t("info.myLiveRoom")}}</a></li>
                                 <li><hr class="dropdown-divider"></li>
@@ -118,5 +118,14 @@ async function logout() {
     localStorage.removeItem('uid');
     localStorage.removeItem('user-type');
     checkLogin();
+}
+async function jumptomyroom() {
+    let type = parseInt(localStorage.getItem('user-type') || "0");
+    if(type & 1 == 1){
+        let uid = localStorage.getItem('uid') || "0";
+        router.push('/live/' + uid);
+    }else{
+        router.push('/user');
+    }
 }
 </script>

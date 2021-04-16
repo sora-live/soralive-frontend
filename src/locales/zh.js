@@ -51,7 +51,15 @@ const zh = {
         confirm: "确认",
         cancel: "取消",
         operationConfirmation: "操作确认",
-        needEntryPassword: "本房间需要输入密码"
+        needEntryPassword: "本房间需要输入密码",
+        noStreaming: "未开播",
+        realTimeComments: "实时评论",
+        onlineCount: "在线人数",
+        delete: "删除",
+        userban: "封禁",
+        send: "发送",
+        refresh: "刷新",
+        onlineuserlist: "在线用户列表："
     },
     tips: {
         repassDifferent: "两次密码不一致。",

@@ -1,16 +1,16 @@
 <template>
     <div v-if="require_password">
         <div class="password-center">
-            <h1>{{t('info.needEntryPassword')}}}</h1>
+            <h1>{{t('info.needEntryPassword')}}</h1>
             <div class="password-enterarea">
                 <form @submit.prevent="getPlayInfo">
                     <div class="row mb-3">
                         <div class="form-group">
                             <div class="offset-sm-3 col-sm-5">
-                                <input type="text" class="form-control" id="inputpass" :placeholder="t('info.password')" v-model="password">
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="submit" class="btn btn-success btn-lg">{{t("info.open")}}</button>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="inputpass" :placeholder="t('info.password')" v-model="password">
+                                    <button type="submit" class="btn btn-success btn-lg">{{t("info.open")}}</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -46,13 +46,13 @@
                     </div>
                     <div id="playerSlot" class="player-slot" v-else>
                         <div v-if="is_loading" class="player-area">{{t("info.loading")}}</div>
-                        <div v-else class="player-area">未开播</div>
+                        <div v-else class="player-area">{{t("info.noStreaming")}}</div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="row justify-content-between">
-                        <h4 class="col-6">实时评论</h4>
-                        <div class="col-4 comment-eye-right"><span class="material-icons" title="在线人数">remove_red_eye</span><span class="online-person">{{online}}</span></div>
+                        <h4 class="col-6">{{t("info.realTimeComments")}}</h4>
+                        <div class="col-4 comment-eye-right"><span class="material-icons" :title="t('info.onlineCount')">remove_red_eye</span><span class="online-person">{{online}}</span></div>
                     </div>
                     <div class="comment-area" id="commentarea">
                         <div class="comment-line" v-for="comment in commentList" :key="comment.cmtId" :class="{'bg-info': comment.author.uid === 0}">
@@ -60,8 +60,8 @@
                             <span v-if="comment.isDeleted" class="comment-deleted">[{{t('info.deletedMessage')}}]</span>
                             <span v-else>{{comment.comment.content}}</span>
                             <ul class="comment-op" v-if="isAdmin">
-                                <li><a href="javascript:;" @click="retractComment(comment.cmtId)">删除</a></li>
-                                <li><a href="javascript:;" @click="userban(comment.author)">封禁</a></li>
+                                <li><a href="javascript:;" @click="retractComment(comment.cmtId)">{{t("info.delete")}}</a></li>
+                                <li><a href="javascript:;" @click="userban(comment.author)">{{t("info.userban")}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="comment-input" v-model="input_comment" :disabled="!is_readyForChat">
-                                        <button type="submit" class="btn btn-primary" :disabled="!is_readyForChat">发送</button>
+                                        <button type="submit" class="btn btn-primary" :disabled="!is_readyForChat">{{t("info.send")}}</button>
                                     </div>
                                 </div>
                             </div>
@@ -85,11 +85,11 @@
             <div>{{ description }}</div>
         </div>
         <div v-if="isAdmin">
-            <h3>在线用户列表：</h3>
-            <p><a href="javascript:;" @click="getOnline">刷新</a></p>
+            <h3>{{t("info.onlineuserlist")}}</h3>
+            <p><a href="javascript:;" @click="getOnline">{{t("info.refresh")}}</a></p>
             <div v-for="u in onlineList" :key="u.uid" class="online-list">
                 <span>{{ u.uname }}</span>
-                <span class="online-b"><a href="javascript:;" @click="userban(u)">封禁</a></span>
+                <span class="online-b"><a href="javascript:;" @click="userban(u)">{{t("info.userban")}}</a></span>
             </div>
         </div>
     </div>
@@ -208,6 +208,7 @@ import gConst from '../globalconst'
 import fetchpost, { fetchPostWithSign } from '../util/fetchpost';
 import sleep from '../util/sleep'
 import { Modal } from 'bootstrap'
+import Player from './player.vue'
 
 const { t } = useI18n();
 const route = useRoute();
@@ -331,6 +332,7 @@ async function connectChatRoom() {
                 {
                     commentList.value.splice(0, commentList.value.length - 999);
                     commentList.value.push(msg);
+                    gConst.globalbus.emit("recv-comment", msg);
                     //自动滚动到底部
                     nextTick(() => {
                         let commentarea = document.getElementById('commentarea');
