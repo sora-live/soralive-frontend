@@ -26,14 +26,17 @@ import { useI18n } from 'vue-i18n'
 import gConst from '../globalconst'
 import DPlayer from 'dplayer'
 import Hls from 'hls.js'
+import flvjs from 'flv.js'
+import mpegts from 'mpegts.js'
 
 const { locale } = useI18n();
 
 const props = defineProps({
-    url: String
+    url: String,
+    type: Number
 });
 
-const { url } = toRefs(props);
+const { url, type } = toRefs(props);
 
 const dPlayerLang = computed(() => {
     if (locale.value == "en") return "en";
@@ -43,12 +46,9 @@ const dPlayerLang = computed(() => {
 localStorage.setItem("dplayer-danmaku-opacity", "1.0");
 
 onMounted(() => {
-    const dp = new DPlayer({
-        container: document.getElementById("dplayer"),
-        live: true,
-        autoplay: true,
-        lang: dPlayerLang.value,
-        video: {
+    let videoConfig = {};
+    if (type.value === 0) {
+        videoConfig = {
             url: url.value,
             type: 'customHls',
             customType: {
@@ -61,7 +61,52 @@ onMounted(() => {
                     });
                 }
             }
-        },
+        }
+    } else if (type.value === 1) {
+        videoConfig = {
+            url: url.value,
+            type: 'customFlv',
+            customType: {
+                customFlv: function (video, player) {
+                    const flvPlayer = flvjs.createPlayer({
+                        type: 'flv',
+                        url: video.src
+                    });
+                    flvPlayer.attachMediaElement(video);
+                    flvPlayer.load();
+                    player.events.on("destroy", () => {
+                        flvPlayer.destroy();
+                    });
+                }
+            }
+        }
+    } else if (type.value === 2){
+        videoConfig = {
+            url: url.value,
+            type: 'customMpegts',
+            customType: {
+                customMpegts: function (video, player) {
+                    const mpegtsPlayer = new mpegts.createPlayer({
+                        type: 'mse',
+                        isLive: true,
+                        url: video.src
+                    });
+                    mpegtsPlayer.attachMediaElement(video);
+                    mpegtsPlayer.load();
+                    player.events.on("destroy", () => {
+                        mpegtsPlayer.destroy();
+                    });
+                }
+            }
+        }
+    }
+
+    const dp = new DPlayer({
+        container: document.getElementById("dplayer"),
+        live: true,
+        autoplay: true,
+        lang: dPlayerLang.value,
+        video: videoConfig,
         danmaku: {
             id: "LIVE",
             api: "SORALIVE"

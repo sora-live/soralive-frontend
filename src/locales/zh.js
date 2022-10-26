@@ -59,7 +59,14 @@ const zh = {
         userban: "封禁",
         send: "发送",
         refresh: "刷新",
-        onlineuserlist: "在线用户列表："
+        onlineuserlist: "在线用户列表：",
+        selectStreamPushType: "选择推流方式",
+        localServer: "SoraLive 服务器",
+        custom: "自定义",
+        playerType: "播放器类型",
+        selectStreamServer: "选择直播服务器",
+        customStreamUrl: "自定义播放地址",
+        updateStreamType: "保存直播参数"
     },
     tips: {
         repassDifferent: "两次密码不一致。",
@@ -98,7 +105,10 @@ const zh = {
         notAuth: "无权进行本操作",
         changePassSuccess: "修改密码成功，您现在需要用您的新密码重新登录。",
         banConfirm: "确认封禁 {uname} 吗？",
-        youHaveBanned: "您已被封禁。"
+        youHaveBanned: "您已被封禁。",
+        setStreamTypeFirst: "注意：您还没有设置推流服务器类型。请先设置推流服务器类型，然后再使用下面的地址推流。",
+        updateStreamTypeSucceed: "直播参数保存成功",
+        invalidStreamType: "无效的推流服务器类型",
     },
     action: {
         toggleNavbar: "切换导航栏",

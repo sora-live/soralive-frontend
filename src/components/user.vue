@@ -35,8 +35,39 @@
                 </div>
                 <div>
                     <h3>{{t("info.streamParam")}}</h3>
-                    <p>{{t("info.streamServer")}}: {{streaming_address}} <button class="btn btn-info btn-sm" @click="copyStreamingURL">{{t("action.copy")}}</button></p>
+                    <p>
+                        {{t("info.selectStreamPushType")}}: 
+                        <button class="btn" :class="{'btn-default': streamType.pushType != 0, 'btn-success': streamType.pushType == 0}" @click="streamType.pushType = 0">{{t("info.localServer")}}</button>
+                        <button class="btn" :class="{'btn-default': streamType.pushType != 1, 'btn-success': streamType.pushType == 1}" @click="streamType.pushType = 1">{{t("info.custom")}}</button>
+                    </p>
+                    <p v-if="streamType.pushType === 0">
+                        {{t("info.selectStreamServer")}}:
+                        <select class="form-select" v-model="streamType.serverId">
+                            <option v-for="s in serverList" :value="s.id">{{s.name}}</option>
+                        </select>
+                    </p>
+                    <p v-if="streamType.pushType === 1">
+                        {{t("info.customStreamUrl")}}:
+                        <input class="form-control" type="text" v-model="streamType.playUrl">
+                    </p>
+                    <p>
+                        {{t("info.playerType")}}: 
+                        <button class="btn" :class="{'btn-default': streamType.playType != 0, 'btn-success': streamType.playType == 0}" @click="streamType.playType = 0">HLS</button>
+                        <button class="btn" :class="{'btn-default': streamType.playType != 1, 'btn-success': streamType.playType == 1}" @click="streamType.playType = 1">FLV</button>
+                        <button class="btn" :class="{'btn-default': streamType.playType != 2, 'btn-success': streamType.playType == 2}" @click="streamType.playType = 2">HTTP-TS</button>
+                    </p>
+                    <p>
+                        <button class="btn btn-primary" @click="updateStreamType">{{t("info.updateStreamType")}}</button>
+                    </p>
+                    <div class="alert alert-danger" role="alert" v-if="isSetStreamType === false">
+                        <p>
+                            {{t("tips.setStreamTypeFirst")}}
+                        </p>
+                    </div>
+                    <hr>
+                    <p>{{t("info.streamServer")}}: {{serverList.find(x => x.id === streamType.serverId)?.rtmp}} <button class="btn btn-info btn-sm" @click="copyStreamingURL">{{t("action.copy")}}</button></p>
                     <p>{{t("info.streamKey")}}: {{streamkey || t("tips.clickButtonBelowToResetStreamKey")}} <button class="btn btn-info btn-sm" @click="copyStreamKey">{{t("action.copy")}}</button></p>
+                    <p>SRT (beta): {{srtUrl || t("tips.clickButtonBelowToResetStreamKey")}} <button class="btn btn-info btn-sm" @click="copySrtUrl">{{t("action.copy")}}</button></p>
                     <p>
                         <button class="btn btn-info" @click="resetSK">{{t("info.resetStreamKey")}}</button>
                         <br>
@@ -102,12 +133,28 @@ const type = ref(0);
 const uid = ref(0);
 const uname = ref("");
 const loadingInfo = ref("info.loading");
-const streaming_address = ref("");
 const privateLevel = ref(0);
 const privatePassword = ref("");
+const channelName = ref("");
+const streamingId = ref("");
+
+const serverList = ref([]);
+const isSetStreamType = ref(false);
+const streamType = ref({
+    pushType: 0,
+    serverId: "",
+    playType: 0,
+    playUrl: ""
+});
 
 const isOpen = computed(() => (type.value & 1) == 1);
 const isAdmin = computed(() => (type.value >> 4 & 1) == 1);
+
+const srtUrl = computed(() => {
+    let server = serverList.value.find(x => x.id === streamType.value.serverId);
+    if (!server) return null;
+    return server.srt + "?streamid=#!::r=live/" + channelName.value + ",m=publish,streamingid=" + streamingId.value
+});
 
 refresh();
 
@@ -135,8 +182,18 @@ async function refresh() {
         streaming.value = json['user']['streaming'] == "1";
         privateLevel.value = json['user']['privateLevel'];
         privatePassword.value = json['user']['privatePassword'];
-        streaming_address.value = json['streaming_address'];
         loadingInfo.value = "tips.needApprove";
+        channelName.value = json['user']['channel'];
+        streamingId.value = json['user']['streamingid'];
+
+        serverList.value = json['server_list'];
+        if (json['stream_type'] != null) {
+            isSetStreamType.value = true;
+            streamType.value = json['stream_type'];
+        }
+        else{
+            isSetStreamType.value = false;
+        }
     }
 }
 
@@ -191,6 +248,21 @@ async function updateRN() {
         gConst.globalbus.emit("send-info", json['info'])
     }
 }
+
+async function updateStreamType() {
+    let api = gConst.apiRoot + "user/updatestreamkey";
+    let res = await fetchPostWithSign(api, {
+        token: localStorage.getItem('token') || "",
+        ...streamType.value
+    });
+    let json = await res.json();
+    if (json['error'] == 0) {
+        gConst.globalbus.emit("send-info", "tips.updateStreamTypeSucceed");
+    } else {
+        gConst.globalbus.emit("send-info", json['info'])
+    }
+}
+
 async function resetSK() {
     let api = gConst.apiRoot + "user/resetkey";
     let res = await fetchPostWithSign(api, {
@@ -231,5 +303,8 @@ function copyStreamingURL() {
 }
 function copyStreamKey() {
     copyTextToClipboard(streamkey.value);
+}
+function copySrtUrl() {
+    copyTextToClipboard(srtUrl.value);
 }
 </script>

@@ -59,7 +59,14 @@ const en = {
         userban: "Ban",
         send: "Send",
         refresh: "Refresh",
-        onlineuserlist: "Online User List: "
+        onlineuserlist: "Online User List: ",
+        selectStreamPushType: "Select the stream push type",
+        localServer: "SoraLive Server",
+        custom: "Custom",
+        playerType: "Player Type",
+        selectStreamServer: "Select the stream server",
+        customStreamUrl: "Custom stream url",
+        updateStreamType: "Update stream type",
     },
     tips: {
         repassDifferent: "The duplicate password is different.",
@@ -98,7 +105,10 @@ const en = {
         notAuth: "Not authorized to perform this operation.",
         changePassSuccess: "The password was changed successfully. You need to login again with your new password.",
         banConfirm: "Are you sure you want to ban {uname}?",
-        youHaveBanned: "You have been banned."
+        youHaveBanned: "You have been banned.",
+        setStreamTypeFirst: "Note: You have not set the push server type. Please set the streaming server type first, and then use the address below to push streaming.",
+        updateStreamTypeSucceed: "The stream type was successfully updated.",
+        invalidStreamType: "The stream type is invalid.",
     },
     action: {
         toggleNavbar: "Toggle navigation bar",

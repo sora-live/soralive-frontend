@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-md-9">
                     <div v-if="is_streaming" class="player-slot">
-                        <Player :url="streaming_uri"></Player>
+                        <Player :url="streaming_uri" :type="player_type"></Player>
                     </div>
                     <div id="playerSlot" class="player-slot" v-else>
                         <div v-if="is_loading" class="player-area">{{t("info.loading")}}</div>
@@ -232,6 +232,7 @@ const is_readyForChat = ref(false);
 const commentList = ref([]);
 const confirmDialogInfo = ref("");
 const onlineList = ref([]);
+const player_type = ref(0);
 
 const isAdmin = computed(() => {
     let type = parseInt(localStorage.getItem('user-type') || "0");
@@ -294,6 +295,7 @@ async function getPlayInfo() {
     description.value = resjson.description;
     is_loading.value = false;
     require_password.value = false;
+    player_type.value = resjson.player_type;
 
     if (resjson.streaming == 1) {
         is_streaming.value = true;
