@@ -51,7 +51,14 @@
         <footer class="footer">
             <div class="container-fluid footer-content">
                 <div>©SoraLive 2018-2023.</div>
-                <div>Special Thanks to MeowSound Idols and other supporters.</div>
+                <div>
+                    Special Thanks to MeowSound Idols and other supporters.
+                    <span class="footer-links">
+                        <router-link class="footer-link" to="/privacy">{{ t("info.privacyPolicy") }}</router-link>
+                        <span class="footer-link-separator">|</span>
+                        <router-link class="footer-link" to="/terms">{{ t("info.termsOfService") }}</router-link>
+                    </span>
+                </div>
             </div>
         </footer>
     </div>
@@ -73,6 +80,22 @@ body{
 .footer-content {
     padding-top: 10px;
     color: #666;
+}
+.footer-links {
+    font-size: 12px;
+    color: #888;
+    margin-left: 8px;
+}
+.footer-link {
+    color: inherit;
+    text-decoration: none;
+}
+.footer-link:hover {
+    color: #777;
+    text-decoration: underline;
+}
+.footer-link-separator {
+    margin: 0 4px;
 }
 </style>
 
