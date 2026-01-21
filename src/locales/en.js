@@ -67,6 +67,8 @@ const en = {
         selectStreamServer: "Select the stream server",
         customStreamUrl: "Custom stream url",
         updateStreamType: "Update stream type",
+        privacyPolicy: "Privacy Policy",
+        termsOfService: "Terms of Service",
     },
     tips: {
         repassDifferent: "The duplicate password is different.",

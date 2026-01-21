@@ -66,7 +66,9 @@ const zh = {
         playerType: "播放器类型",
         selectStreamServer: "选择直播服务器",
         customStreamUrl: "自定义播放地址",
-        updateStreamType: "保存直播参数"
+        updateStreamType: "保存直播参数",
+        privacyPolicy: "隐私政策",
+        termsOfService: "服务条款"
     },
     tips: {
         repassDifferent: "两次密码不一致。",
