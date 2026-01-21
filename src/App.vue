@@ -92,7 +92,7 @@ body{
     text-decoration: underline;
 }
 .footer-link:hover {
-    color: #555;
+    color: #444;
     text-decoration: underline;
 }
 .footer-link-separator {
