@@ -35,8 +35,10 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="offset-sm-2 col-sm-10">
+                <div class="offset-sm-2 col-sm-10 d-flex align-items-center flex-wrap gap-3">
                     <button type="submit" class="btn btn-primary">{{t("info.reg")}}</button>
+                    <router-link to="/privacy" class="link-secondary">隐私政策</router-link>
+                    <router-link to="/terms" class="link-secondary">服务条款</router-link>
                 </div>
             </div>
         </form>
