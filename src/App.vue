@@ -83,7 +83,7 @@ body{
 }
 .footer-links {
     font-size: 12px;
-    color: #888;
+    color: #666;
     margin-left: 8px;
 }
 .footer-link {
@@ -91,7 +91,7 @@ body{
     text-decoration: none;
 }
 .footer-link:hover {
-    color: #777;
+    color: #555;
     text-decoration: underline;
 }
 .footer-link-separator {
