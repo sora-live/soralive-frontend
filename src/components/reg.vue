@@ -35,8 +35,10 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="offset-sm-2 col-sm-10">
+                <div class="offset-sm-2 col-sm-10 d-flex align-items-center flex-wrap gap-3">
                     <button type="submit" class="btn btn-primary">{{t("info.reg")}}</button>
+                    <router-link to="/privacy" class="link-secondary">{{t("info.privacyPolicy")}}</router-link>
+                    <router-link to="/terms" class="link-secondary">{{t("info.termsOfService")}}</router-link>
                 </div>
             </div>
         </form>

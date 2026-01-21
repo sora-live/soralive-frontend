@@ -66,7 +66,9 @@ const zh = {
         playerType: "播放器类型",
         selectStreamServer: "选择直播服务器",
         customStreamUrl: "自定义播放地址",
-        updateStreamType: "保存直播参数"
+        updateStreamType: "保存直播参数",
+        privacyPolicy: "隐私政策",
+        termsOfService: "服务条款"
     },
     tips: {
         repassDifferent: "两次密码不一致。",
@@ -118,6 +120,34 @@ const zh = {
     lang: {
         zh: "简体中文",
         en: "英语"
+    },
+    privacy: {
+        title: "隐私政策",
+        intro: "本应用尊重并保护用户的个人信息与隐私安全。我们仅在提供服务所必需的范围内收集与处理数据，并严格按照适用法律法规进行管理。",
+        collectTitle: "我们收集的信息",
+        collectContent: "注册与使用服务时，我们可能会收集用户名、邮箱、登录凭证以及与直播相关的必要配置。我们不会主动收集与服务无关的敏感信息。",
+        useTitle: "信息的使用",
+        useContent: "收集的信息用于账号注册、登录验证、服务通知、内容推荐与安全审计。我们不会将个人信息出售或泄露给第三方，除非获得用户授权或依据法律要求。",
+        storageTitle: "信息的存储与保护",
+        storageContent: "我们采取合理的技术与管理措施保护数据安全，包括访问控制、日志审计与加密传输等。信息将存储在提供服务所需的最短期限内。",
+        rightsTitle: "用户权利",
+        rightsContent: "用户可在用户中心查看与更新个人信息，并可通过客服渠道申请删除账号或相关数据。我们将在合理期限内响应您的请求。",
+        contactTitle: "联系我们",
+        contactContent: "如对本隐私政策有疑问或建议，请通过站内反馈渠道与我们联系。"
+    },
+    terms: {
+        title: "服务条款",
+        intro: "欢迎使用本应用。使用我们的服务即表示您同意遵守以下条款与相关法律法规。",
+        accountTitle: "账号与安全",
+        accountContent: "您需对账号的使用行为负责，并妥善保管登录凭证。若发现异常登录或安全风险，请及时通知我们。",
+        contentTitle: "内容与行为规范",
+        contentContent: "您不得发布违法、侵权、暴力或其他不当内容。请遵守平台社区规范，尊重他人权利与合法利益。",
+        changeTitle: "服务变更",
+        changeContent: "我们可能根据业务发展对服务进行调整或升级，并在必要时提前通知用户。若您继续使用服务，即视为接受调整后的内容。",
+        liabilityTitle: "免责与责任限制",
+        liabilityContent: "在法律允许的范围内，我们对因不可抗力或第三方原因导致的服务中断不承担责任。对于因用户自身行为产生的损失，由用户自行承担。",
+        contactTitle: "联系我们",
+        contactContent: "如对本服务条款有疑问，请通过站内反馈渠道与我们联系。"
     }
 }
 export default zh;
