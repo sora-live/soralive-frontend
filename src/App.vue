@@ -53,11 +53,11 @@
                 <div>©SoraLive 2018-2023.</div>
                 <div>
                     Special Thanks to MeowSound Idols and other supporters.
-                    <span class="footer-links">
+                    <nav class="footer-links" aria-label="Footer links">
                         <router-link class="footer-link" to="/privacy">{{ t("info.privacyPolicy") }}</router-link>
-                        <span class="footer-link-separator">|</span>
+                        <span class="footer-link-separator" aria-hidden="true">|</span>
                         <router-link class="footer-link" to="/terms">{{ t("info.termsOfService") }}</router-link>
-                    </span>
+                    </nav>
                 </div>
             </div>
         </footer>
@@ -82,13 +82,14 @@ body{
     color: #666;
 }
 .footer-links {
+    display: inline;
     font-size: 12px;
     color: #666;
     margin-left: 8px;
 }
 .footer-link {
     color: inherit;
-    text-decoration: none;
+    text-decoration: underline;
 }
 .footer-link:hover {
     color: #555;
