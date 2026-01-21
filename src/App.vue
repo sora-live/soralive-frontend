@@ -94,7 +94,6 @@ body{
 .footer-link:hover,
 .footer-link:focus {
     color: #333;
-    text-decoration: underline;
 }
 .footer-link-separator {
     margin: 0 4px;
