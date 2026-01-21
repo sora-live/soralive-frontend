@@ -120,6 +120,34 @@ const en = {
     lang: {
         zh: "Chinese (Simplified)",
         en: "English"
+    },
+    privacy: {
+        title: "Privacy Policy",
+        intro: "We respect and protect user privacy. We collect and process data only as necessary to provide the service, in accordance with applicable laws and regulations.",
+        collectTitle: "Information we collect",
+        collectContent: "When registering and using the service, we may collect usernames, emails, login credentials, and necessary streaming configuration. We do not intentionally collect unrelated sensitive data.",
+        useTitle: "How we use information",
+        useContent: "Collected information is used for account registration, login verification, service notifications, content recommendations, and security audits. We do not sell or disclose personal information without authorization or legal requirements.",
+        storageTitle: "Storage and protection",
+        storageContent: "We apply reasonable technical and administrative measures such as access control, audit logs, and encrypted transmission. Information is stored only for the minimum period necessary to provide the service.",
+        rightsTitle: "User rights",
+        rightsContent: "Users can review and update personal information in the user center and request deletion through support channels. We respond within a reasonable timeframe.",
+        contactTitle: "Contact us",
+        contactContent: "If you have questions or suggestions about this policy, please contact us through the in-app feedback channel."
+    },
+    terms: {
+        title: "Terms of Service",
+        intro: "Welcome to the app. By using our service, you agree to the following terms and applicable laws and regulations.",
+        accountTitle: "Account and security",
+        accountContent: "You are responsible for your account activity and must keep credentials secure. Notify us promptly if you detect abnormal logins or security risks.",
+        contentTitle: "Content and conduct",
+        contentContent: "You must not publish illegal, infringing, violent, or otherwise inappropriate content. Please follow community guidelines and respect the rights of others.",
+        changeTitle: "Service changes",
+        changeContent: "We may adjust or upgrade the service as the business evolves and will notify users when necessary. Continued use indicates acceptance of the changes.",
+        liabilityTitle: "Disclaimers and limitations",
+        liabilityContent: "To the extent permitted by law, we are not liable for service interruptions caused by force majeure or third parties. Losses caused by user actions are borne by the user.",
+        contactTitle: "Contact us",
+        contactContent: "If you have questions about these terms, please contact us through the in-app feedback channel."
     }
 }
 export default en;

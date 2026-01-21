@@ -1,17 +1,17 @@
 <template>
     <div class="policy">
-        <h1>服务条款</h1>
-        <p>欢迎使用本应用。使用我们的服务即表示您同意遵守以下条款与相关法律法规。</p>
-        <h2>账号与安全</h2>
-        <p>您需对账号的使用行为负责，并妥善保管登录凭证。若发现异常登录或安全风险，请及时通知我们。</p>
-        <h2>内容与行为规范</h2>
-        <p>您不得发布违法、侵权、暴力或其他不当内容。请遵守平台社区规范，尊重他人权利与合法利益。</p>
-        <h2>服务变更</h2>
-        <p>我们可能根据业务发展对服务进行调整或升级，并在必要时提前通知用户。若您继续使用服务，即视为接受调整后的内容。</p>
-        <h2>免责与责任限制</h2>
-        <p>在法律允许的范围内，我们对因不可抗力或第三方原因导致的服务中断不承担责任。对于因用户自身行为产生的损失，由用户自行承担。</p>
-        <h2>联系我们</h2>
-        <p>如对本服务条款有疑问，请通过站内反馈渠道与我们联系。</p>
+        <h1>{{t("terms.title")}}</h1>
+        <p>{{t("terms.intro")}}</p>
+        <h2>{{t("terms.accountTitle")}}</h2>
+        <p>{{t("terms.accountContent")}}</p>
+        <h2>{{t("terms.contentTitle")}}</h2>
+        <p>{{t("terms.contentContent")}}</p>
+        <h2>{{t("terms.changeTitle")}}</h2>
+        <p>{{t("terms.changeContent")}}</p>
+        <h2>{{t("terms.liabilityTitle")}}</h2>
+        <p>{{t("terms.liabilityContent")}}</p>
+        <h2>{{t("terms.contactTitle")}}</h2>
+        <p>{{t("terms.contactContent")}}</p>
     </div>
 </template>
 
@@ -26,3 +26,9 @@
     margin-top: 20px;
 }
 </style>
+
+<script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n();
+</script>

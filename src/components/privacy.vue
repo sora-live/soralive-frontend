@@ -1,17 +1,17 @@
 <template>
     <div class="policy">
-        <h1>隐私政策</h1>
-        <p>本应用尊重并保护用户的个人信息与隐私安全。我们仅在提供服务所必需的范围内收集与处理数据，并严格按照适用法律法规进行管理。</p>
-        <h2>我们收集的信息</h2>
-        <p>注册与使用服务时，我们可能会收集用户名、邮箱、登录凭证以及与直播相关的必要配置。我们不会主动收集与服务无关的敏感信息。</p>
-        <h2>信息的使用</h2>
-        <p>收集的信息用于账号注册、登录验证、服务通知、内容推荐与安全审计。我们不会将个人信息出售或泄露给第三方，除非获得用户授权或依据法律要求。</p>
-        <h2>信息的存储与保护</h2>
-        <p>我们采取合理的技术与管理措施保护数据安全，包括访问控制、日志审计与加密传输等。信息将存储在提供服务所需的最短期限内。</p>
-        <h2>用户权利</h2>
-        <p>用户可在用户中心查看与更新个人信息，并可通过客服渠道申请删除账号或相关数据。我们将在合理期限内响应您的请求。</p>
-        <h2>联系我们</h2>
-        <p>如对本隐私政策有疑问或建议，请通过站内反馈渠道与我们联系。</p>
+        <h1>{{t("privacy.title")}}</h1>
+        <p>{{t("privacy.intro")}}</p>
+        <h2>{{t("privacy.collectTitle")}}</h2>
+        <p>{{t("privacy.collectContent")}}</p>
+        <h2>{{t("privacy.useTitle")}}</h2>
+        <p>{{t("privacy.useContent")}}</p>
+        <h2>{{t("privacy.storageTitle")}}</h2>
+        <p>{{t("privacy.storageContent")}}</p>
+        <h2>{{t("privacy.rightsTitle")}}</h2>
+        <p>{{t("privacy.rightsContent")}}</p>
+        <h2>{{t("privacy.contactTitle")}}</h2>
+        <p>{{t("privacy.contactContent")}}</p>
     </div>
 </template>
 
@@ -26,3 +26,9 @@
     margin-top: 20px;
 }
 </style>
+
+<script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n();
+</script>
