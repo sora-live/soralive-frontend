@@ -88,10 +88,11 @@ body{
     margin-left: 8px;
 }
 .footer-link {
-    color: inherit;
+    color: #555;
     text-decoration: underline;
 }
-.footer-link:hover {
+.footer-link:hover,
+.footer-link:focus {
     color: #444;
     text-decoration: underline;
 }
