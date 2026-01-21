@@ -54,9 +54,9 @@
                 <div>
                     Special Thanks to MeowSound Idols and other supporters.
                     <nav class="footer-links" aria-label="Footer links">
-                        <router-link class="footer-link" to="/privacy">{{ t("info.privacyPolicy") }}</router-link>
+                        <router-link class="footer-link" :to="{ name: 'privacy' }">{{ t("info.privacyPolicy") }}</router-link>
                         <span class="footer-link-separator" aria-hidden="true">|</span>
-                        <router-link class="footer-link" to="/terms">{{ t("info.termsOfService") }}</router-link>
+                        <router-link class="footer-link" :to="{ name: 'terms' }">{{ t("info.termsOfService") }}</router-link>
                     </nav>
                 </div>
             </div>
@@ -88,12 +88,12 @@ body{
     margin-left: 8px;
 }
 .footer-link {
-    color: #555;
+    color: #444;
     text-decoration: underline;
 }
 .footer-link:hover,
 .footer-link:focus {
-    color: #444;
+    color: #333;
     text-decoration: underline;
 }
 .footer-link-separator {
